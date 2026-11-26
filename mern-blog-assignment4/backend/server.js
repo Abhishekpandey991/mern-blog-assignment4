@@ -163,6 +163,12 @@ async function start() {
     if (!MONGO_URI) {
       throw new Error("MONGO_URI environment variable is missing");
     }
+    console.log("MONGO_URI exists:", Boolean(MONGO_URI));
+    console.log(
+      "MONGO_URI starts with mongodb:",
+      MONGO_URI?.trim().startsWith("mongodb://") ||
+        MONGO_URI?.trim().startsWith("mongodb+srv://"),
+    );
 
     await mongoose.connect(MONGO_URI);
     console.log("MongoDB Atlas connected successfully");
